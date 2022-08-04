@@ -1,3 +1,6 @@
+package runner;
+
+import airport.Airport;
 import models.MilitaryType;
 import planes.MilitaryPlane;
 import planes.PassengerPlane;

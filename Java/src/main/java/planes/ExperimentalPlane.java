@@ -1,7 +1,6 @@
 package planes;
 
 import models.ClassificationLevel;
-import models.ExperimentalTypes;
 
 public class ExperimentalPlane extends Plane{
 
