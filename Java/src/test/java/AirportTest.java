@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AirportTest {
-    private static List<Plane> planes = Arrays.asList(
+    private final List<Plane> planes = Arrays.asList(
             new PassengerPlane("Boeing-737", 900, 12000, 60500, 164),
             new PassengerPlane("Boeing-737-800", 940, 12300, 63870, 192),
             new PassengerPlane("Boeing-747", 980, 16100, 70500, 242),
@@ -52,7 +52,7 @@ public class AirportTest {
         System.out.println("TEST testGetPassengerPlaneWithMaxCapacity started!");
         Airport airport = new Airport(planes);
         PassengerPlane expectedPlaneWithMaxPassengersCapacity = airport.getPassengerPlaneWithMaxPassengersCapacity();
-        Assert.assertTrue(expectedPlaneWithMaxPassengersCapacity.equals(planeWithMaxPassengerCapacity),
+        Assert.assertEquals(expectedPlaneWithMaxPassengersCapacity,planeWithMaxPassengerCapacity,
                 "Get passenger plane with max capacity");
     }
 
@@ -81,20 +81,19 @@ public class AirportTest {
         List<MilitaryPlane> bomberMilitaryPlanes = airport.getBomberMilitaryPlanes();
         for (MilitaryPlane militaryPlane : bomberMilitaryPlanes) {
             if ((militaryPlane.getMilitaryType() == MilitaryType.BOMBER)) {
-            }
-            else {
+            } else {
                 Assert.fail("Test Has at least one bomber in military planes failed!");
             }
         }
     }
 
     @Test
-    public void testExperimentalPlanesHasClassificationLevelHigherThanUnclassified(){
+    public void testExperimentalPlanesHasClassificationLevelHigherThanUnclassified() {
         Airport airport = new Airport(planes);
         List<ExperimentalPlane> ExperimentalPlanes = airport.getExperimentalPlanes();
         boolean hasUnclassifiedPlanes = false;
-        for(ExperimentalPlane experimentalPlane : ExperimentalPlanes){
-            if(experimentalPlane.getClassificationLevel() == ClassificationLevel.UNCLASSIFIED){
+        for (ExperimentalPlane experimentalPlane : ExperimentalPlanes) {
+            if (experimentalPlane.getClassificationLevel() == ClassificationLevel.UNCLASSIFIED) {
                 hasUnclassifiedPlanes = true;
                 break;
             }
