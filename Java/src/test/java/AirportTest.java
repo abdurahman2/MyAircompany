@@ -44,7 +44,7 @@ public class AirportTest {
                 break;
             }
         }
-        Assert.assertTrue(flag, "Get transport military planes");
+        Assert.assertTrue(flag, "There are no military aircraft");
     }
 
     @Test
@@ -52,8 +52,8 @@ public class AirportTest {
         System.out.println("TEST testGetPassengerPlaneWithMaxCapacity started!");
         Airport airport = new Airport(planes);
         PassengerPlane expectedPlaneWithMaxPassengersCapacity = airport.getPassengerPlaneWithMaxPassengersCapacity();
-        Assert.assertEquals(expectedPlaneWithMaxPassengersCapacity,planeWithMaxPassengerCapacity,
-                "Get passenger plane with max capacity");
+        Assert.assertEquals(expectedPlaneWithMaxPassengersCapacity, planeWithMaxPassengerCapacity,
+                "Passenger plane with maximum capacity does not correspond to expectations");
     }
 
     @Test
@@ -72,19 +72,21 @@ public class AirportTest {
             }
         }
         Assert.assertTrue(nextPlaneMaxLoadCapacityIsHigherThanCurrent,
-                "Next plane max load capacity is higher than current");
+                "This plane has the maximum capacity");
     }
 
     @Test
     public void testHasAtLeastOneBomberInMilitaryPlanes() {
         Airport airport = new Airport(planes);
         List<MilitaryPlane> bomberMilitaryPlanes = airport.getBomberMilitaryPlanes();
+        boolean flag = false;
         for (MilitaryPlane militaryPlane : bomberMilitaryPlanes) {
             if ((militaryPlane.getMilitaryType() == MilitaryType.BOMBER)) {
-            } else {
-                Assert.fail("Test Has at least one bomber in military planes failed!");
+                flag = true;
+                break;
             }
         }
+        Assert.assertTrue(flag, "Test Has at least one bomber in military planes failed!");
     }
 
     @Test
